@@ -22,8 +22,9 @@ RUN apt-get install -y \
 RUN apt-get install -y apache2 libapache2-mod-php7.0
 RUN a2enmod rewrite
 
-# Install MySQL
+# Install MySQL and start
 RUN apt-get install -y mysql-client mysql-server
+RUN /etc/init.d/mysql start
 
 # Copy configurations
 COPY apache.config /etc/apache2/sites-available/000-default.conf
