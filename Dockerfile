@@ -28,7 +28,7 @@ RUN apt-get install -y mysql-client mysql-server
 
 # Install Redis
 RUN apt-get install -y redis-server
-RUN apt-get install php7.0-redis
+RUN apt-get install -y php-redis
 
 # Copy configurations
 WORKDIR /var/www/application
