@@ -26,6 +26,10 @@ RUN echo 'mysql-server mysql-server/root_password password password' | debconf-s
 RUN echo 'mysql-server mysql-server/root_password_again password password' | debconf-set-selections
 RUN apt-get install -y mysql-client mysql-server
 
+# Install Redis
+RUN apt-get install -y redis-server
+RUN apt-get install php7.0-redis
+
 # Copy configurations
 WORKDIR /var/www/application
 COPY apache.config /etc/apache2/sites-available/000-default.conf
@@ -36,5 +40,6 @@ COPY start.sh /usr/bin/
 # Expose apache and mysql ports
 EXPOSE 80
 EXPOSE 3306
+EXPOSE 6379
 
 CMD ["/usr/bin/start.sh"]
