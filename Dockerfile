@@ -33,6 +33,10 @@ RUN apt-get install -y php-redis
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install --yes nodejs
 
+# Install Selenium
+RUN wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar
+RUN apt-get install -y chromium-browser xvfb default-jdk
+
 # Copy configurations
 WORKDIR /var/www/application
 COPY apache.config /etc/apache2/sites-available/000-default.conf
