@@ -45,7 +45,7 @@ RUN wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-sta
 RUN wget https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -O ~/selenium/chromedriver_linux64.zip
 RUN cd ~/selenium; unzip chromedriver_linux64.zip
 RUN apt-get install -y chromium-browser xvfb default-jdk
-
+COPY ~/selenium ~/selenium
 
 # Expose apache and mysql ports
 EXPOSE 80
