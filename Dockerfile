@@ -32,7 +32,6 @@ RUN apt-get install -y php-redis
 # Install Node
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install --yes nodejs
-RUN npm install -g npm@latest
 
 # Copy configurations
 WORKDIR /var/www/application
