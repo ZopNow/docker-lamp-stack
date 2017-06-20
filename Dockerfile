@@ -1,12 +1,11 @@
 FROM ubuntu:16.04
 MAINTAINER Vikash Kumar <vikash.iitb@gmail.com>
 
-# Install Development tools
+# Update and upgrade
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y vim unzip wget curl
 
 # Install PHP
-
 RUN apt-get install -y \
     php7.0 \
     php7.0-cli \
@@ -30,12 +29,16 @@ RUN apt-get install -y mysql-client mysql-server
 RUN apt-get install -y redis-server
 RUN apt-get install -y php-redis
 
+# Install Node
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install --yes nodejs
+RUN npm install -g npm@latest
+
 # Copy configurations
 WORKDIR /var/www/application
 COPY apache.config /etc/apache2/sites-available/000-default.conf
 COPY index.php /var/www/application/public/
 COPY start.sh /usr/bin/
-
 
 # Expose apache and mysql ports
 EXPOSE 80
