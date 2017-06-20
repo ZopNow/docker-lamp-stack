@@ -44,10 +44,11 @@ COPY index.php /var/www/application/public/
 COPY start.sh /usr/bin/
 
 # Install Selenium
-RUN mkdir ~/selenium/
-RUN wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar -O ~/selenium/selenium.jar
-RUN wget https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -O ~/selenium/chromedriver_linux64.zip
-RUN unzip ~/selenium/chromedriver_linux64.zip
+RUN mkdir ./selenium/
+RUN wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar -O ./selenium/selenium.jar
+RUN wget https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -O ./selenium/chromedriver_linux64.zip
+RUN unzip ./selenium/chromedriver_linux64.zip
+COPY selenium ~/selenium
 RUN apt-get install -y chromium-browser xvfb default-jdk
 
 
