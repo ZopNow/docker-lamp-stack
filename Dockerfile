@@ -41,11 +41,10 @@ COPY start.sh /usr/bin/
 
 # Install Selenium
 RUN mkdir /root/selenium/
-RUN wget https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar -O /root/selenium/selenium.jar
-RUN wget https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip -O /root/selenium/chromedriver_linux64.zip
-RUN cd /root/selenium; unzip chromedriver_linux64.zip
+ADD https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar /root/selenium/
+ADD https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip /root/selenium/chromedriver_linux64.zip
+RUN cd /root/selenium; unzip chromedriver_linux64.zip; rm chromedriver_linux64.zip
 RUN apt-get install -y chromium-browser xvfb default-jdk
-COPY /root/selenium /root/selenium
 
 # Expose apache and mysql ports
 EXPOSE 80
