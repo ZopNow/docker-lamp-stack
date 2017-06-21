@@ -42,9 +42,9 @@ COPY start.sh /usr/bin/
 # Install Selenium
 RUN mkdir /root/selenium/
 ADD https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar /root/selenium/
-ADD https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip /root/selenium/chromedriver_linux64.zip
-RUN cd /root/selenium; unzip chromedriver_linux64.zip; rm chromedriver_linux64.zip
-RUN apt-get install -y chromium-browser xvfb default-jdk
+ADD https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver-v0.17.0-linux64.tar.gz /root/selenium/geckodriver-linux64.tar.gz
+RUN cd /root/selenium; tar -xvzf geckodriver-linux64.tar.gz; rm geckodriver-linux64.tar.gz
+RUN apt-get install -y firefox xvfb default-jdk
 
 # Expose apache and mysql ports
 EXPOSE 80
