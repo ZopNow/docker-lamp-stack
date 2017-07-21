@@ -47,7 +47,7 @@ RUN cd /root/selenium; tar -xvzf geckodriver-linux64.tar.gz; rm geckodriver-linu
 RUN apt-get install -y firefox xvfb default-jdk
 
 # Install AWS cli for deployements
-RUN apt-get install awscli
+RUN apt-get install -y awscli
 
 # Expose apache and mysql ports
 EXPOSE 80
