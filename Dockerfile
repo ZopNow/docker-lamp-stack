@@ -46,6 +46,9 @@ ADD https://github.com/mozilla/geckodriver/releases/download/v0.17.0/geckodriver
 RUN cd /root/selenium; tar -xvzf geckodriver-linux64.tar.gz; rm geckodriver-linux64.tar.gz
 RUN apt-get install -y firefox xvfb default-jdk
 
+# Install AWS cli for deployements
+RUN apt-get install awscli
+
 # Expose apache and mysql ports
 EXPOSE 80
 EXPOSE 3306
